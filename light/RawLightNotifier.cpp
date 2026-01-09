@@ -40,7 +40,7 @@ class RawLightSensorCallback : public IEventQueueCallback {
         msg->sensorType = kSensorTypeAmbientlightRaw;
 
         SscCalApiWrapper::getInstance().processMsg(msg);
-
+        delete msg;
         return Void();
     }
 };
@@ -159,5 +159,6 @@ void RawLightNotifier::notify() {
         msg->unknown2 = 5;
 
         SscCalApiWrapper::getInstance().processMsg(msg);
+        delete msg;
     }
 }
